@@ -9,7 +9,7 @@ my_con = mysql.connector.connect(host="localhost", port=3306, user="root", passw
 
 
 def usernames():
-    for i in range(5):
+    for i in range(3):
         my_con1 = mysql.connector.connect(host="localhost", port=3306, user="root", password="Navap@321", database="bank")
         user_name = input("Enter Username: ")
 
@@ -49,8 +49,8 @@ def name():
 
 def password():
     pass_word = input("Enter you password: ")
-    if len(pass_word) <= 5:
-        print("Minimum five characters required.")
+    if len(pass_word) <= 6:
+        print("Minimum six characters required.")
     else:
         return pass_word
 
