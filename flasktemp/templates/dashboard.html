@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>logged in</title>
+</head>
+<body>
+<h1>{{depositmsg}}</h1>
+<h1>Welcome to Dashboard {{name}}</h1>><br>
+<form action="/changepassword" method="post" >
+
+            <input align="center" type="submit" value="Change password" style="font-size: 20px; padding: 20px 30px;"/>
+
+</form>
+<form action="/check_bal">
+
+            <input align="center" type="submit" value="Check Balance" style="font-size: 20px; padding: 20px 30px;"/>
+</form>
+<form action="/deposit" method="post" >
+
+            <input align="center" type="submit" value="Deposit" style="font-size: 20px; padding: 20px 30px;"/>
+</form>
+<form action="/withdraw" method="post" >
+
+            <input align="center" type="submit" value="Withdraw" style="font-size: 20px; padding: 20px 30px;"/>
+</form>
+<form action="/fundtransfer" method="post" >
+
+            <input align="center" type="submit" value="Transfer" style="font-size: 20px; padding: 20px 30px;"/>
+</form>
+<form action="/logout">
+
+            <input align="center" type="submit" value="LogOut" style="font-size: 20px; padding: 20px 30px;"/>
+</form>
+<form>
+<input type="hidden" name="name" value="{{name}}">
+<input type="hidden" name="username" value="{{username}}">
+<input type="hidden" name="password" value="{{password}}">
+<input type="hidden" name="account_num" value="{{account_num}}">
+<input type="hidden" name="balance" value="{{balance}}">
+</form>
+</body>
+</html>

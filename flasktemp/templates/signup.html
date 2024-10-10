@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+</head>
+<body style="font-size : 20px; ">
+    <form action="/registered" method="post">
+
+        <center>
+            {{error}}
+            <br><br>
+            Name : <input type="text" name="name" placeholder="Enter your Name here" maxlength="25" style="font-size: 30px;"> <br><br>
+    Username : <input type="text" name="username" placeholder="Enter your username here" maxlength="35" style="font-size: 30px;"> <br><br>
+    Password : <input type="password" name="password" placeholder="Password" minlength="6" maxlength="20" style="font-size: 30px;"><br><br>
+    <input type="submit" value="submit" style="font-size: 20px; padding: 20px 30px;"> <br><br>
+            <p><a href="/opening_menu">Go Back</a></p>
+        </center>
+    </form>
+</body>
+</html>

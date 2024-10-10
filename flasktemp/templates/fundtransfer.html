@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fund transfer</title>
+</head>
+<body>
+
+<form action="/transferred" method="post">
+    <center>
+        {{msg}}
+<h1> Enter recipient's account number: <input type="text" name="to_account" maxlength="15" minlength="6"></h1>
+<h1> Enter amount to Transfer: <input type="number" name="to_amount"></h1>
+    <input type="submit" value="Transfer"></center>
+</form>
+</body>
+</html>
