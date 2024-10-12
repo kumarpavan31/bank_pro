@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            gap: 20px;
+            background-color: #f4f4f4;
+        }
+        .panel {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        .flash-message {
+            background-color: #dff0d8;
+            color: #3c763d;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input, select {
+            padding: 10px;
+            margin: 5px 0;
+            width: calc(100% - 22px);
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #f9f9f9;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            margin-left: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="panel">
+    <h2>Add Task</h2>
+    {% if flash_message %}
+        <div class="flash-message">{{ flash_message }}</div>
+    {% endif %}
+    <form action="/addtask" method="post">
+        <input type="text" name="task_name" placeholder="Task Name" required>
+        <input type="datetime-local" name="task_date" required>
+        <input type="number" name="completion_time" placeholder="Time to Complete (hours)" required>
+        <select name="task_status" required>
+            <option value="" disabled selected>Task Status</option>
+            <option value="pending">Pending</option>
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+        </select>
+        <select name="priority" required>
+            <option value="" disabled selected>Priority</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+        <input type="submit" value="Add Task">
+    </form>
+</div>
+
+<div class="panel">
+    <h2>Your Tasks</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <table border="black">
+<thead>
+<tr>
+<th>task_name</th>
+<th>Priority</th>
+<th>status</th>
+<th></th>
+<th></th>
+
+</tr>
+</thead>
+<tbody>
+<tr><form action="/edit_todo/{{ task[0] }}" >
+<td>
+    <input type="text" name="task_name" value="{{task[1]}}">
+
+</td>
+<td>        <select name="priority" required>
+                                <option value="low" {% if task[5] =='low' %}selected{% endif %}>Low</option>
+                                <option value="medium" {% if task[5] =='medium' %}selected{% endif %}>Medium</option>
+                                <option value="high" {% if task[5] =='high' %}selected{% endif %}>High</option>
+                            </select>
+</td>
+<td>                            <select name="task_status" required>
+                                <option value="pending" {% if task[4] =='pending' %}selected{% endif %}>Pending</option>
+                                <option value="in-progress" {% if task[4] =='in-progress' %}selected{% endif %}>In Progress</option>
+                                <option value="completed" {% if task[4] =='completed' %}selected{% endif %}>Completed</option>
+                            </select></td>
+<td><input type="submit" value="Edit"></td>
+    </form>
+<td><a href="/delete_todo/{{ task[0] }}">Delete</a></td>
+</tr>
+</tbody>
+
+</table>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+</html>
+
+
