@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+<div>
+<h2> Pending Orders</h2>
+{% if unpaid_orders %}
+<table border="black">
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>Garment</th>
+                <th>Measurements</th>
+                <th>customer_address</th>
+                <th>customer_contact</th>
+                <th>measurements by tailor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in unpaid_orders %}
+                <tr>
+                    <form action="/take_measurements/{{order[4]}}/{{order[2]}}/{{order[3]}}/{{order[1]}}" method="post" >
+                        <td>
+                            {{order[1]}}
+                        </td>
+                        <td>
+                            {{order[4]}}
+                        </td>
+                        <td>
+                            <input type="text" name="measurements" value="{{order[9]}}" placeholder="{{order[9]}}" readonly>
+                        </td>
+                        <td>
+                            {{order[5]}}
+                        </td>
+                        <td>
+                            {{order[8]}}
+                        </td>
+
+                        <td><input type="submit" value="Update Measurements"></td>
+                    </form>
+
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+        {% else %}
+            <h3>NO pending orders</h3>
+    {% endif %}
+</div>
+
+<div>
+    <h2>Working Orders</h2>
+    {% if working_orders %}
+    <table border="black">
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>Garment</th>
+                <th>Measurements</th>
+                <th>customer_address</th>
+                <th>customer_contact</th>
+                <th>customer_description</th>
+                <th>status</th>
+                <th>order_date</th>
+                <th>update_status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in working_orders %}
+            <tr>
+                <form action="/take_measurements/{{ order[4] }}/{{ order[2] }}/{{ order[3] }}/{{ order[1] }}" method="post">
+                    <td>{{ order[2] }}</td>
+                    <td>{{ order[5] }}</td>
+                    <td>{{ order[10] }}</td>
+                    <td>{{ order[6] }}</td>
+                    <td>{{ order[9] }}</td>
+                    <td>{{ order[13] }}</td>
+                    <td>{{ order[14] }}</td>
+                    <td>
+                        <select name="status" required>
+                            <option value="pending" {% if order[15] =='pending' %}selected{% endif %}>Pending</option>
+                            <option value="in-progress" {% if order[15] =='in-progress' %}selected{% endif %}>In Progress</option>
+                            <option value="delivered" {% if order[15] =='delivered' %}selected{% endif %}>Delivered</option>
+                        </select>
+                    </td>
+                    <td><input type="submit" value="Update Status"></td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <h3>NO Working orders</h3>
+    {% endif %}
+</div>
+
+<div>
+    <h2>Completed Orders</h2>
+    {% if delivered_orders %}
+    <table border="black">
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>Garment</th>
+                <th>status</th>
+                <th>order_date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in delivered_orders %}
+            <tr>
+                    <td>{{ order[2] }}</td>
+                    <td>{{ order[5] }}</td>
+                    <td>{{ order[14] }}</td>
+                    <td>{{ order[15] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <h3>No completed orders</h3>
+    {% endif %}
+</div>
+
+</body>
+</html>

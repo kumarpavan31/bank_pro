@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+</head>
+<body>
+
+<a href="/custhome/{{customer_id}}"><input type="submit" value="Home"></a>
+<a href="/cust_profile/{{customer_id}}"><input type="submit" value="Profile"></a>
+<a href="/cust_orders/{{customer_id}}"><input type="submit" value="orders"></a>
+<a href="/cust_logout/{{customer_id}}"><input type="submit" value="logout"></a>
+
+
+<h2>Your Profile</h2>
+<h3><a href="/edit_cust_profile/{{customer_id}}"><input type="submit" value="Edit Profile"></a> </h3>
+            <div class="product-grid">
+                {% for cust_detail  in cust_details %}
+                    <div class="product-card">
+                        <form action="/edit_all_data/{{customer_id}}" method="post">
+                        <h3>ID: <input type="number" name="customer_id" placeholder="{{ cust_detail[1] }}" readonly></h3>
+                        <p> Name: <input type="text" name="customer_name" placeholder="{{ cust_detail[2] }}" required></p>
+                        <p> email: <input type="email" name="customer_email" placeholder="{{ cust_detail[3] }}" required></p>
+                        <p> contact: <input type="number" name="customer_contact" placeholder="{{ cust_detail[4] }}" readonly></p>
+                        <p> Address: <input type="text" name="address" placeholder="{{ cust_detail[6] }}" required></p>
+                        </form>
+                    </div>
+                {% endfor %}
+            </div>
+
+</body>
+</html>

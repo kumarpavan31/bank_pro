@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kurta Women</title>
+</head>
+<body>
+<form action="/take_order/{{choice}}/{{tailor_id}}/{{customer_id}}" method="post">
+<label> Kurta Type: </label><br>
+<div>
+<input type="radio" id="long" name="choice1" value="long" checked> Long Kurta
+<input type="radio" id="short" name="choice1" value="short"> Short Kurta
+</div>
+<label>Measurements: </label><br>
+<div>
+    Collar: <input type="number" name="collar" placeholder="in(cm)" required><br>
+    Chest:  <input type="number" name="chest" placeholder="in(cm)" required><br>
+    Waist:  <input type="number" name="waist" placeholder="in(cm)" required><br>
+    Seat:   <input type="number" name="seat" placeholder="in(cm)" required><br>
+    Front Width:    <input type="number" name="front_width" placeholder="in(cm)" required><br>
+    First Button:   <input type="number" name="first_button" placeholder="in(cm)" required><br>
+    Sleeve Length:  <input type="number" name="sleeve_length" placeholder="in(cm)" required><br>
+    Short Sleeve Length:    <input type="number" name="short_sleeve_length" placeholder="in(cm)" required><br>
+    Short Sleeve Opening:   <input type="number" name="short_sleeve_opening" placeholder="in(cm)" required><br>
+    Biceps: <input type="number" name="biceps" placeholder="in(cm)" required><br>
+    Forearm:    <input type="number" name="forearm" placeholder="in(cm)" required><br>
+    Armhole: <input type="number" name="armhole" placeholder="in(cm)" required><br>
+    Shoulder: <input type="number" name="shoulder" placeholder="in(cm)" required><br>
+    Back Width: <input type="number" name="back_width" placeholder="in(cm)" required><br>
+    Shirt Length (Front): <input type="number" name="shirt_length_front" placeholder="in(cm)" required><br>
+    Shirt Length (Back): <input type="number" name="shirt_length_back" placeholder="in(cm)" required><br>
+    Cuff: <input type="number" name="cuff" placeholder="in(cm)" required><br>
+
+</div>
+    <input type="submit" value="Submit">
+
+</form>
+
+</body>
+</html>

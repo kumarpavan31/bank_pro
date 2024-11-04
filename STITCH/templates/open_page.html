@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EZ</title>
+</head>
+<body>
+<a href="/"><input type="submit" value="Home"></a>
+<a href="/tailorsignin"><input type="submit" value="Sign in as tailor"></a>
+<a href="/customer_sign_in"><input type="submit" value="Sign in as Customer"></a>
+
+<h2>Our Services</h2>
+        {% if services %}
+            <div class="product-grid">
+                {% for service  in services %}
+                    <div class="product-card">
+                        <a href="/all_tailors_for/{{service[0]}}"> <img src="data:image/png;base64,{{ service[1]|b64encode }}" alt="Product Image"></a>
+                        <h3>{{ service[0] }}</h3>
+                        <p>{{ service.description }}</p>
+                        <p>{{ service.price }}</p>
+
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No Services available</p>
+        {% endif %}
+</body>
+</html>

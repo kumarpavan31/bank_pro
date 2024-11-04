@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Available Tailors</title>
+</head>
+<body>
+
+{% for tailor_id, details in tailor_dict.items() %}
+    <div class="product-card">
+        <h3>{{ details['name']}}</h3>
+        <p>Description: {{ details.description if details.description else 'No description available' }}</p>
+        <p>Skills:</p>
+        <ul>
+            {% for skill in details['skills'] %}
+                <li>{{ skill['skill_name'] }} </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endfor %}
+
+</body>
+</html>

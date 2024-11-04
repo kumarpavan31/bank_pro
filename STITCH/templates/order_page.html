@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+</head>
+<body>
+<form action="/payment_page/{{customer_id}}/{{tailor_id}}/{{choice}}/{{temp_orderid}}" method="post">
+
+<h2>Your Details:</h2>
+<input type="radio" name="address" value="default" checked>
+Name: <input type="text" name="cust_name" value="{{cust_details[2]}}" readonly>{{cust_details[2]}}<br>
+Address: <input type="text" name="customer_address" value="{{cust_details[6]}}" readonly>{{cust_details[6]}}<br>
+Email: <input type="text" name="customer_email" value="{{cust_details[3]}}" readonly>{{cust_details[3]}}<br>
+Contact: <input type="text" name="customer_contact" value="{{cust_details[4]}}" readonly>{{cust_details[4]}}<br>
+
+{% for address in addresses %}
+<input type="radio" name="address" value="{{address[1]}}">  <!-- Unique identifier for each address -->
+    Name: <input type="text" name="cust_name" value="{{address[4]}}" readonly><br>
+    Address: <input type="text" name="customer_address" value="{{address[5]}}" readonly><br>
+    Email: <input type="text" name="customer_email" value="{{cust_details[3]}}" readonly><br>
+    Contact: <input type="text" name="customer_contact" value="{{address[6]}}" readonly><br>
+{% endfor %}
+
+Not this address?<a href="/cust_new_address/{{temp_orderid}}/{{choice}}/{{customer_id}}">Click here to add new address</a>
+
+Amount To Be Paid: <input type="number" name="value" value="{{price[0]}}" placeholder="{{price[0]}}" readonly>
+
+<input type="submit" value="Proceed to Pay">
+
+</form>
+
+</body>
+</html>

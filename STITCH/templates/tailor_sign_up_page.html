@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign UP</title>
+</head>
+<body>
+<a href="/"><input type="submit" value="Home"></a>
+<a href="/tailorsignin"><input type="submit" value="Sign in as tailor"></a>
+<a href="/customersignin"><input type="submit" value="Sign in as Customer"></a>
+
+<form action="/set_price" method="post">
+<h1>Tailor Registration</h1>
+<input type="text" name="tailor_name" placeholder="Enter Your Name" required>
+<input type="email" name="tailor_email" placeholder="Enter Your Email" required>
+<input type="number" name="tailor_contact" placeholder="Enter Your Contact Number" required>
+<input type="password" name="tailor_password" placeholder="Enter Password" required>
+<input type="number" name="experience" placeholder="Experience (in years)" required>
+<input type="text" name="tailor_machine" placeholder="Enter Your Machine" required>
+    <input type="text" name="address" placeholder="Enter your address" required>
+Gender:
+<div>
+<input type="radio" id="male" name="gender" value="male"> Male
+<input type="radio" id="female" name="gender" value="female"> Female
+<input type="radio" id="Others" name="gender" value="Others"> Others
+
+    </div>
+<h3>Select your skills</h3>
+<input type="checkbox" name="shirt" value="shirt"> Shirts
+<input type="checkbox" name="trousers" value="trousers"> Trousers
+<input type="checkbox" name="kurta_men" value="kurta_men"> Kurta for Men
+<input type="checkbox" name="dhoti" value="dhoti"> Dhoti
+<input type="checkbox" name="blouse" value="blouse"> Blouse
+<input type="checkbox" name="saree" value="saree"> Saree
+<input type="checkbox" name="blazer" value="blazer"> Blazer
+<input type="checkbox" name="kurta_women" value="kurta_women"> Kurta for Women
+<input type="checkbox" name="minor_stitches" value="minor_stitches"> Minor Stitches
+<input type="checkbox" name="custom" value="custom"> custom
+<input type="submit" value="Register">
+</form>
+</body>
+</html>

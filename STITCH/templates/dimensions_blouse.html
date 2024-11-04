@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blouse</title>
+</head>
+<body>
+<form action="/take_order/{{choice}}/{{tailor_id}}/{{customer_id}}" method="post">
+<label> Sleeves: </label><br>
+<div>
+<input type="radio" id="full_sleeves" name="choice1" value="full_sleeves" checked> Full Sleeves
+<input type="radio" id="half_sleeves" name="choice1" value="half_sleeves"> Half Sleeves
+</div>
+
+
+<label>Measurements: </label><br>
+<div>
+    bust: <input type="number" name="bust" placeholder="in(cm)" required><br>
+    under bust:  <input type="number" name="under_bust" placeholder="in(cm)" required><br>
+    sleeve length:  <input type="number" name="sleeve_length" placeholder="in(cm)" required><br>
+    front neck depth:   <input type="number" name="front_neck_depth" placeholder="in(cm)" required><br>
+    back neck depth:    <input type="number" name="back_neck_depth" placeholder="in(cm)" required><br>
+    around arm:   <input type="number" name="around_arm" placeholder="in(cm)" required><br>
+    shoulder:  <input type="number" name="shoulder" placeholder="in(cm)" required><br>
+    armhole:    <input type="number" name="armhole" placeholder="in(cm)" required><br>
+
+</div>
+    <input type="submit" value="Submit">
+
+</form>
+
+</body>
+</html>

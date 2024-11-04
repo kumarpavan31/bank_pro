@@ -1,0 +1,14 @@
+{% extends "customer_profile.html" %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<div>
+    <form action="/add_to_wallet/{{customer_id}}" method="post">
+    <input type="number" name="amount" placeholder="Enter amount to deposit" required>
+    <input type="submit" value="Add Amount">
+   </form>
+
+</div>
+
+{% endblock %}

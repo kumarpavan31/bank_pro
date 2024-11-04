@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking</title>
+</head>
+<body>
+{{tailor_name}}
+<form action="/procced_dimensions/{{tailor_id}}/{{customer_id}}" method="post">
+{% for skill in skills %}
+<ul>
+<input type="radio" id="{{skill[0]}}" name="choice" value="{{skill[0]}}" required> {{skill[0]}} : {{skill[1]}}
+</ul>
+{% endfor %}
+<input type="submit" value="Proceed">
+</form>
+</body>
+</html>

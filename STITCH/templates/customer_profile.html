@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Profile</title>
+</head>
+<body>
+<a href="/custhome/{{customer_id}}"><input type="submit" value="Home"></a>
+<a href="/cust_profile/{{customer_id}}"><input type="submit" value="Profile"></a>
+<a href="/cust_orders/{{customer_id}}"><input type="submit" value="orders"></a>
+<a href="/cust_logout/{{customer_id}}"><input type="submit" value="logout"></a>
+
+
+<h2>Your Profile</h2>
+<h3><a href="/edit_cust_profile/{{customer_id}}"><input type="submit" value="Edit Profile"></a> </h3>
+            <div class="product-grid">
+                {% for cust_detail  in cust_details %}
+                    <div class="product-card">
+                        <h3>ID: {{ cust_detail[1] }}</h3>
+                        <p> Name: {{ cust_detail[2] }}</p>
+                        <p> email: {{ cust_detail[3] }}</p>
+                        <p> contact: {{ cust_detail[4] }}</p>
+                        <p> Address: {{ cust_detail[6] }}</p>
+                        <p> Wallet: {{ cust_detail[2] }}</p> <h3><a href="/add_money/{{customer_id}}"><input type="submit" value="Add Money to Wallet"></a> </h3>
+
+                    </div>
+                {% endfor %}
+            </div>
+
+<div>
+
+    {% block content %}{% endblock %}
+
+</div>
+</body>
+</html>

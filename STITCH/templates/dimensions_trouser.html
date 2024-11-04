@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trousers</title>
+</head>
+<body>
+<form action="/take_order/{{choice}}/{{tailor_id}}/{{customer_id}}" method="post">
+<label>Measurements: </label><br>
+<div>
+    Waist: <input type="number" name="waist" placeholder="in(cm)" required><br>
+    Seat:  <input type="number" name="seat" placeholder="in(cm)" required><br>
+    Thigh:  <input type="number" name="thigh" placeholder="in(cm)" required><br>
+    Knee:   <input type="number" name="knee" placeholder="in(cm)" required><br>
+    Bottom:    <input type="number" name="bottom" placeholder="in(cm)" required><br>
+    Height:   <input type="number" name="height" placeholder="in(cm)" required><br>
+
+</div>
+    <input type="submit" value="Submit">
+
+</form>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Price list</title>
+</head>
+<body>
+{{tailor_name}}
+    {% for skill  in skills %}
+    <ul>
+    {{skill[0]}} : {{skill[1]}}
+        </ul>
+    {% endfor %}
+
+<a href="/booking/{{tailor_id}}/{{customer_id}}">Book Now</a>
+
+</body>
+</html>

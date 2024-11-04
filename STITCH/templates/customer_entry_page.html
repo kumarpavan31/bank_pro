@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EZ</title>
+</head>
+<body>
+<a href="/custhome/{{customer_id}}"><input type="submit" value="Home"></a>
+<a href="/cust_profile/{{customer_id}}"><input type="submit" value="Profile"></a>
+<a href="/cust_orders/{{customer_id}}"><input type="submit" value="orders"></a>
+<a href="/cust_logout/{{customer_id}}"><input type="submit" value="logout"></a>
+
+
+<h2>Our Services</h2>
+        {% if services %}
+            <div class="product-grid">
+                {% for service  in services %}
+                    <div class="product-card">
+                        <a href="/all_tailors_for/{{service[0]}}/{{customer_id}}"> <img src="data:image/png;base64,{{ service[1]|b64encode }}" alt="Product Image"></a>
+                        <h3>{{ service[0] }}</h3>
+                        <p>{{ service.description }}</p>
+                        <p>{{ service.price }}</p>
+
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No Services available</p>
+        {% endif %}
+</body>
+</html>

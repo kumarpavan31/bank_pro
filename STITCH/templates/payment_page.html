@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+</head>
+<body>
+Amount to be paid: {{price}}
+
+<form action="/pay_now/{{choice}}/{{price}}/{{customer_id}}/{{tailor_id}}/{{temp_orderid}}" method="post">
+    <input type="radio" id="wallet" name="choice1" value="wallet" checked> WALLET
+    <input type="radio" id="other" name="choice1" value="other"> OTHER
+    <input type="submit" value="pay now">
+</form>
+</body>
+</html>
