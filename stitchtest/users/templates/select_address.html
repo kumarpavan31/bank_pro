@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Address</title>
+</head>
+<body>
+<form action="/users/decide_measurements/{{user_id}}/{{tailor_id}}/{{garment}}" method="post">
+
+<h2>Your Addresses:</h2>
+{%if addresses%}
+
+{% for address in addresses %}
+<input type="radio" name="address" value="{{address[1]}}" required>  <!-- Unique identifier for each address -->
+    Name: <input type="text" name="cust_name" value="{{address[4]}}" readonly><br>
+    Address: <input type="text" name="customer_address" value="{{address[5]}}" readonly><br>
+    Email: <input type="text" name="customer_email" value="{{cust_details[3]}}" readonly><br>
+    Contact: <input type="text" name="customer_contact" value="{{address[6]}}" readonly><br>
+{% endfor %}
+{%else%}
+    <h5>No address found</h5>
+{%endif%}
+<a href="/users/new_address/{{user_id}}/{{garment}}/{{tailor_id}}">Click here to add new address</a>
+
+
+<input type="submit" value="Proceed">
+
+</form>
+
+</body>
+</html>

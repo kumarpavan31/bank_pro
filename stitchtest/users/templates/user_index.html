@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>STITCH EZ</title>
+</head>
+<body>
+<a href="/users/home/{{user_id}}"><input type="submit" value="Home"></a>
+<a href="/users/profile/{{user_id}}"><input type="submit" value="Profile"></a>
+<a href="/users/orders/{{user_id}}"><input type="submit" value="orders"></a>
+<a href="/users/logout/{{user_id}}"><input type="submit" value="logout"></a>
+
+
+<h2>Our Services</h2>
+        {% if services %}
+            <div class="product-grid">
+                {% for service  in services %}
+                    <div class="product-card">
+                        <a href="users/available_tailors/{{service[0]}}/{{user_id}}"> <img src="data:image/png;base64,{{ service[1]|b64encode }}" alt="Product Image"></a>
+                        <h3>{{ service[0] }}</h3>
+                        <p>{{ service.description }}</p>
+                        <p>{{ service.price }}</p>
+
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No Services available</p>
+        {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+</head>
+<body>
+{{tailor_name}}
+{% for skill  in tailor_skills %}
+    <ul>
+    {{skill[2]}} : {{skill[3]}}
+        </ul>
+    {% endfor %}
+
+<a href="/users/book_now/{{tailor_id}}/{{garment}}/{{user_id}}"></a>
+</body>
+</html>

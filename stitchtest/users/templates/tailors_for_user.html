@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Available tailors</title>
+</head>
+<body>
+
+<a href="/users/home/{{user_id}}"><input type="submit" value="Home"></a>
+<a href="/users/profile/{{user_id}}"><input type="submit" value="Profile"></a>
+<a href="/users/orders/{{user_id}}"><input type="submit" value="orders"></a>
+<a href="/users/logout/{{user_id}}"><input type="submit" value="logout"></a>
+
+
+<h2>Available Tailors</h2>
+        {% if available_tailors %}
+            <div class="product-grid">
+                {% for tailor  in available_tailors %}
+                    <div class="product-card">
+                        <a href="/selected_tailor/{{garment}}/{{tailor[0]}}/{{tailor[1]}}/{{user_id}}"><h3> {{ tailor[1] }} </h3></a>
+
+                        <p>{{ garment.price }}</p>
+                        <br>
+
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No Tailors available</p>
+        {% endif %}
+
+</body>
+</html>

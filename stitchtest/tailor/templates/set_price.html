@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pricing</title>
+</head>
+<body>
+
+{% for skill in skills %}
+                    <img src="data:image/png;base64,{{ skill[4]|b64encode }}" alt="Product Image" width="100">
+                    <h3>{{ skill[2] }}</h3>
+                    <form action="/tailor/add_price/{{ skill[2] }}/{{ tailor_id }}">
+                    <input type="number" name="price" placeholder="{{skill[3]}}" required>
+                    <input type="submit" value="Set Price">
+                        </form>
+                </div>
+            {% endfor %}
+<form action="tailor/dashboard/{{tailor_id}}" method="post">
+<input type="submit" value="Final Submit">
+</form>
+</body>
+</html>
