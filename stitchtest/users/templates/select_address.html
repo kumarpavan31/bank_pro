@@ -11,21 +11,27 @@
 {%if addresses%}
 
 {% for address in addresses %}
-<input type="radio" name="address" value="{{address[1]}}" required>  <!-- Unique identifier for each address -->
-    Name: <input type="text" name="cust_name" value="{{address[4]}}" readonly><br>
-    Address: <input type="text" name="customer_address" value="{{address[5]}}" readonly><br>
-    Email: <input type="text" name="customer_email" value="{{cust_details[3]}}" readonly><br>
-    Contact: <input type="text" name="customer_contact" value="{{address[6]}}" readonly><br>
+<input type="radio" name="address_id" value="{{address[1]}}" >  <!-- Unique identifier for each address -->
+    Name: <input type="text" name="name" value="{{address[2]}}" readonly><br>
+    Address: <input type="text" name="address" value="{{address[5]}}" readonly><br>
+    Email: <input type="text" name="email" value="{{email}}" readonly><br>
+    Contact: <input type="text" name="contact" value="{{address[4]}}" readonly><br>
 {% endfor %}
 {%else%}
     <h5>No address found</h5>
 {%endif%}
-<a href="/users/new_address/{{user_id}}/{{garment}}/{{tailor_id}}">Click here to add new address</a>
-
-
-<input type="submit" value="Proceed">
+    <input type="submit" value="Proceed">
 
 </form>
+<div>
+     <a href="/users/new_address/{{user_id}}/{{garment}}/{{tailor_id}}">Click here to add new address</a>
+
+    {% block content %}{% endblock %}
+
+</div>
+
+
+
 
 </body>
 </html>

@@ -24,14 +24,14 @@ class USERS:
             self.my_con.close()
             return
 
-    def verify_login(self, contact, password):
+    def verify_login_db(self, contact, password):
         cursor = self.my_con.cursor()
         query = f"""select user_id from customers where contact = '{contact}' and password = '{password}'"""
         cursor.execute(query)
-        user_id = cursor.fetchall()
+        user_id = cursor.fetchone()
         cursor.close()
         self.my_con.close()
-        return user_id
+        return user_id[0]
 
     def user_info(self, user_id):
         cursor = self.my_con.cursor()
@@ -40,7 +40,7 @@ class USERS:
         user = cursor.fetchall()
         cursor.close()
         self.my_con.close()
-        return user
+        return user[0]
 
     def check_contact(self):
         cursor = self.my_con.cursor()
@@ -51,39 +51,48 @@ class USERS:
         self.my_con.close()
         return contacts
 
+    def update_wallet(self, user_id, new_wallet):
+        cursor = self.my_con.cursor()
+        query = f"""update customers set wallet = '{new_wallet}' where user_id = '{user_id}'"""
+        cursor.execute(query)
+        self.my_con.commit()
+        cursor.close()
+        self.my_con.close()
+        return
+
 
 class ADDRESS:
     def __init__(self):
         self.my_con = mysql.connector.connect(host="localhost", port=3306, user="root", password="Navap@321",
                                      database="stitchtest")
 
-    def add_address(self, user_id, name, email, contact, address):
+    def add_address(self, user_id, address_id, name, email, contact, address):
         cursor = self.my_con.cursor()
-        query = """insert into address (user_id, name, email, contact, address) values (%s, %s, %s, %s, %s)"""
-        cursor.execute(query, (user_id, name, email, contact, address))
+        query = """insert into cust_address (user_id, address_id, name, email, contact, address) values (%s, %s, %s, %s, %s, %s)"""
+        cursor.execute(query, (user_id, address_id, name, email, contact, address))
         self.my_con.commit()
         cursor.close()
         self.my_con.close()
         return
 
-    def del_address(self, user_id, address):
+    def get_address(self, user_id, address_id):
         cursor = self.my_con.cursor()
-        query = f"""delete from address where user_id = '{user_id}' and address='{address}'"""
+        query = f"""select * from cust_address where user_id = '{user_id}' and address_id='{address_id}'"""
         cursor.execute(query)
-        self.my_con.commit()
+        address = cursor.fetchall()
         cursor.close()
         self.my_con.close()
-        return
+        return address[0]
 
 
     def get_all_address(self, user_id):
         cursor = self.my_con.cursor()
-        query = f"""select * from address where user_id = '{user_id}'"""
+        query = f"""select * from cust_address where user_id = '{user_id}'"""
         cursor.execute(query)
-        self.my_con.commit()
+        addresses = cursor.fetchall()
         cursor.close()
         self.my_con.close()
-        return
+        return addresses
 
 
 class MEASUREMENTS:
@@ -92,9 +101,9 @@ class MEASUREMENTS:
         self.my_con = mysql.connector.connect(host="localhost", port=3306, user="root", password="Navap@321",
                                               database="stitchtest")
 
-    def add_measurements(self, user_id, garment, measurements ):
+    def add_measurements(self, user_id, garment, measurements):
         cursor = self.my_con.cursor()
-        query = """insert into address (user_id, garment, measurements) values (%s, %s, %s)"""
+        query = """insert into measurements (user_id, garment, measurement) values (%s, %s, %s)"""
         cursor.execute(query, (user_id, garment, measurements))
         self.my_con.commit()
         cursor.close()

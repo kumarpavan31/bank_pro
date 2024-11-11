@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+<div>
+    <h2>Pending Orders</h2>
+{%if waiting_orders %}
+    <table border="black">
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>Garment</th>
+                <th>Measurements</th>
+                <th>Customer_name</th>
+                <th>customer_address</th>
+                <th>customer_contact</th>
+                <th>select Customer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for order in waiting_orders%}
+                <tr>
+                    <form action="/executive/take_order/{{order[0]}}/{{executive_id}}" method="post" >
+                        <td>
+                            {{order[0]}}
+                        </td>
+                        <td>
+                            {{order[11]}}
+                        </td>
+                        <td>
+                            {{order[12]}}
+                        </td>
+                        <td>
+                            {{order[6]}}
+                        </td>
+                        <td>
+                            {{order[5]}}
+                        </td>
+                        <td>
+                            {{order[7]}}
+                        </td>
+                        <td><input type="submit" value="Book Now"></td>
+                    </form>
+
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+        {% else %}
+            <h3>NO pending orders</h3>
+    {% endif %}
+</div>
+
+<div>
+    <h2>Working Orders</h2>
+    {% if working_orders %}
+    <table border="black">
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>Garment</th>
+                <th>Measurements</th>
+                <th>Customer_name</th>
+                <th>customer_address</th>
+                <th>customer_contact</th>
+                <th> OTP</th>
+                <th>Update measurements</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in working_orders %}
+            <tr>
+                <form action="/executive/take_measurements/{{ order[0] }}/{{ order[1] }}/{{ order[11] }}/{{ executive_id }}/{{order[12]}}" method="post">
+                    <td>
+                            {{order[0]}}
+                        </td>
+                        <td>
+                            {{order[11]}}
+                        </td>
+                        <td>
+                            {{order[12]}}
+                        </td>
+                        <td>
+                            {{order[6]}}
+                        </td>
+                        <td>
+                            {{order[5]}}
+                        </td>
+                        <td>
+                            {{order[7]}}
+                        </td>
+                    <td>
+                        <input type="number" name="customer_otp" placeholder="Enter OTP" required>
+                    </td>
+                    <td><input type="submit" value="take measurements"></td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <h3>NO Working orders</h3>
+    {% endif %}
+</div>
+
+
+
+<div>
+    <h2>Deliver To Tailor</h2>
+    {% if to_deliver_to_tailor %}
+    <table border="black">
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>Garment</th>
+                <th>Measurements</th>
+                <th>tailor_name</th>
+                <th>tailor_address</th>
+                <th>tailor_contact</th>
+                <th> OTP</th>
+                <th>Update measurements</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in to_deliver_to_tailor %}
+            <tr>
+                <form action="/executive/handover_to_tailor/{{ order[0] }}/{{ order[1] }}/{{ order[11] }}/{{ executive_id }}/{{order[2]}}" method="post">
+                    <td>
+                            {{order[0]}}
+                        </td>
+                        <td>
+                            {{order[11]}}
+                        </td>
+                        <td>
+                            {{order[12]}}
+                        </td>
+                        <td>
+                            {{order[10]}}
+                        </td>
+                        <td>
+                            {{order[8]}}
+                        </td>
+                        <td>
+                            {{order[9]}}
+                        </td>
+                    <td>
+                        <input type="number" name="tailor_otp" placeholder="Enter OTP" required>
+                    </td>
+                    <td><input type="submit" value="HAND OVER"></td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <h3>NO Working orders</h3>
+    {% endif %}
+</div>
+
+
+
+<div>
+    <h2>Orders to Deliver</h2>
+    {% if to_deliver_orders %}
+    <table border="black">
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>Garment</th>
+                <th>status</th>
+                <th>order_date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in to_deliver_orders %}
+            <tr>
+                    <td>{{ order[2] }}</td>
+                    <td>{{ order[5] }}</td>
+                    <td>{{ order[14] }}</td>
+                    <td>{{ order[15] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <h3>No completed orders</h3>
+    {% endif %}
+</div>
+
+
+    </div>
+</body>
+</html>

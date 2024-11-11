@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<body>
+
+<div>
+    <form action="/users/reason_to_cancel/{{tailor_id}}/{{order_id}}" method="post">
+    <select name="cancel_reason" id="cancel-reason">
+            <option value="Tailor not available">Tailor not available</option>
+            <option value="other">Other</option>
+        </select>
+    <input type="submit" value="submit">
+
+    </form>
+</div>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Method</title>
+</head>
+<body>
+<br><br>
+<a href="/users/home/{{user_id}}"><input type="submit" value="Home"></a>
+<a href="/users/profile/{{user_id}}"><input type="submit" value="Profile"></a>
+<a href="/users/orders/{{user_id}}"><input type="submit" value="orders"></a>
+<a href="/users/logout/{{user_id}}"><input type="submit" value="logout"></a><br><br>
+Amount to be paid: {{price}}
+<br><br>
+<form action="/users/pay_now/{{user_id}}/{{tailor_id}}/{{garment}}/{{price}}/{{address}}" method="post">
+    <input type="radio" id="wallet" name="choice" value="wallet" checked> WALLET
+    <input type="radio" id="other" name="choice" value="other"> OTHER
+    <input type="submit" value="pay now">
+</form>
+</body>
+</html>

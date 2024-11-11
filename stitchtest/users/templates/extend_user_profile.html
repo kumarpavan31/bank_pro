@@ -1,0 +1,17 @@
+{% extends "user_profile.html" %}
+
+{% block title %}Wallet{% endblock %}
+
+{% block content %}
+
+<div>
+    <form action="/users/add_money_to_wallet/{{user_id}}" method="post">
+    <input type="number" name="wallet" placeholder="Enter Amount to add to wallet">
+    <input type="submit" value="Add Amount">
+
+
+    </form>
+</div>
+
+
+{% endblock %}

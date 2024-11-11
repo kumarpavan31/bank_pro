@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+<a href="/users/home/{{user_id}}"><input type="submit" value="Home"></a>
+<a href="/users/profile/{{user_id}}"><input type="submit" value="Profile"></a>
+<a href="/users/orders/{{user_id}}"><input type="submit" value="orders"></a>
+<a href="/users/logout/{{user_id}}"><input type="submit" value="logout"></a><br><br>
+<a href="/users/edit_profile/{{user_id}}"><input type="submit" value="Edit Profile"></a>
+<div>
+    <center>
+        Name: {{user_info[1]}}<br>
+        Email : {{user_info[2]}}<br>
+        Contact NUmber: {{user_info[3]}}<br>
+        Wallet: {{user_info[7]}}<br>
+
+    </center>
+
+</div>
+<div>
+     <a href="/users/add_amount/{{user_id}}">Click here to add Money to Wallet</a>
+
+    {% block content %}{% endblock %}
+
+</div>
+
+</body>
+</html>

@@ -17,7 +17,7 @@
             <div class="product-grid">
                 {% for tailor  in available_tailors %}
                     <div class="product-card">
-                        <a href="/selected_tailor/{{garment}}/{{tailor[0]}}/{{tailor[1]}}/{{user_id}}"><h3> {{ tailor[1] }} </h3></a>
+                        <a href="/users/selected_tailor/{{garment}}/{{tailor[0]}}/{{tailor[1]}}/{{user_id}}"><h3> {{ tailor[1] }} </h3></a>
 
                         <p>{{ garment.price }}</p>
                         <br>

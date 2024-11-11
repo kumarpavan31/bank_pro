@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<body>
+<a href="/users/home/{{user_id}}"><input type="submit" value="Home"></a>
+<a href="/users/profile/{{user_id}}"><input type="submit" value="Profile"></a>
+<a href="/users/orders/{{user_id}}"><input type="submit" value="orders"></a>
+<a href="/users/logout/{{user_id}}"><input type="submit" value="logout"></a>
+
+
+
+<div>
+  <h2>Pending / Working Orders</h2>
+{%if waiting_orders %}
+    <table border="black">
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>Garment</th>
+                <th>Measurements</th>
+                <th>executive_name</th>
+                <th>executive_contact</th>
+                <th>Order Date</th>
+                <th>OTP</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for order in waiting_orders%}
+                <tr>
+                        <td>
+                            {{order[0]}}
+                        </td>
+                        <td>
+                            {{order[11]}}
+                        </td>
+                        <td>
+                            {{order[12]}}
+                        </td>
+                        <td>
+                            {{order[23]}}
+                        </td>
+                        <td>
+                            {{order[4]}}
+                        </td>
+                        <td>
+                            {{order[15]}}
+                        </td>
+                        <td>
+                            {{order[17]}}
+                        </td>
+                        <td>
+                            {{order[14]}}
+                        </td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+        {% else %}
+            <h3>No pending/working orders</h3>
+    {% endif %}
+</div>
+
+
+
+<div>
+    <h2>In Trasit Orders</h2>
+    {% if working_orders %}
+    <table border="black">
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>Garment</th>
+                <th>Measurements</th>
+                <th>Executive_name</th>
+                <th>Executive_contact</th>
+                <th>OTP</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in working_orders %}
+            <tr>
+                <form action="/executive/take_measurements/{{ order[0] }}/{{ order[1] }}/{{ order[11] }}/{{ executive_id }}/{{order[12]}}" method="post">
+                    <td>
+                            {{order[0]}}
+                        </td>
+                        <td>
+                            {{order[11]}}
+                        </td>
+                        <td>
+                            {{order[12]}}
+                        </td>
+                        <td>
+                            {{order[6]}}
+                        </td>
+                        <td>
+                            {{order[5]}}
+                        </td>
+                        <td>
+                            {{order[7]}}
+                        </td>
+                    <td>
+                        <input type="number" name="customer_otp" placeholder="Enter OTP" required>
+                    </td>
+                    <td><input type="submit" value="take measurements"></td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <h3>No orders available</h3>
+    {% endif %}
+</div>
+
+
+
+<div>
+    <h2>Delivered Orders</h2>
+    {% if delivered_orders %}
+    <table border="black">
+        <thead>
+            <tr>
+                <th>order_id</th>
+                <th>Garment</th>
+                <th>Measurements</th>
+                <th>Ordered On</th>
+                <th>delivered on</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in working_orders %}
+            <tr>
+                <form action="/executive/take_measurements/{{ order[0] }}/{{ order[1] }}/{{ order[11] }}/{{ executive_id }}/{{order[12]}}" method="post">
+                    <td>
+                            {{order[0]}}
+                        </td>
+                        <td>
+                            {{order[11]}}
+                        </td>
+                        <td>
+                            {{order[12]}}
+                        </td>
+                        <td>
+                            {{order[6]}}
+                        </td>
+                        <td>
+                            {{order[5]}}
+                        </td>
+                        <td>
+                            {{order[7]}}
+                        </td>
+                    <td>
+                        <input type="number" name="customer_otp" placeholder="Enter OTP" required>
+                    </td>
+                    <td><input type="submit" value="take measurements"></td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <h3>No orders available</h3>
+    {% endif %}
+</div>
+
+
+</body>
+</html>

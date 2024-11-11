@@ -1,0 +1,17 @@
+{% extends "select_address.html" %}
+
+{% block title %}address{% endblock %}
+
+{% block content %}
+<div>
+    <form action="/users/add_address/{{user_id}}/{{garment}}/{{tailor_id}}" method="post">
+    Name: <input type="text" name="name"  required><br>
+    Address: <input type="text" name="address"  required><br>
+    <input type="hidden" name="email" ><br>
+    Contact: <input type="text" name="contact"  required><br>
+        <input type="submit" value="add address">
+   </form>
+
+</div>
+
+{% endblock %}

@@ -16,7 +16,7 @@
             <div class="product-grid">
                 {% for service  in services %}
                     <div class="product-card">
-                        <a href="users/available_tailors/{{service[0]}}/{{user_id}}"> <img src="data:image/png;base64,{{ service[1]|b64encode }}" alt="Product Image"></a>
+                        <a href="/users/available_tailors/{{service[0]}}/{{user_id}}"> <img src="data:image/png;base64,{{ service[1]|b64encode }}" alt="Product Image"></a>
                         <h3>{{ service[0] }}</h3>
                         <p>{{ service.description }}</p>
                         <p>{{ service.price }}</p>

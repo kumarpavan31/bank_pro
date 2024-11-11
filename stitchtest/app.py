@@ -12,6 +12,7 @@ app.register_blueprint(users, url_prefix="/users")
 app.register_blueprint(tailor, url_prefix="/tailor")
 app.register_blueprint(orders, url_prefix="/orders")
 app.register_blueprint(executive, url_prefix="/executive")
+app.config["SECRET_KEY"] = "pakodi"
 
 def b64encode(data):
     return base64.b64encode(data).decode('utf-8')

@@ -13,17 +13,16 @@ class DELIVERY_PARTNER:
         cursor = self.my_con.cursor()
         query = f"""select executive_id from executives where contact = '{contact}' and password = '{password}'"""
         cursor.execute(query)
-        executive_id = cursor.fetchall()
+        executive_id = cursor.fetchone()
         cursor.close()
         self.my_con.close()
-        return executive_id
+        return executive_id[0]
 
 
     def add_executive(self, executive_id, name, email, contact, password, address, created_on):
         cursor = self.my_con.cursor()
-        query = """insert into tailors (executive_id, name, email, contact, password, address, created_on) values (%s, %s, %s, %s, %s, %s, %s)"""
-        cursor.execute(query, (
-        executive_id, name, email, contact, password, address, created_on))
+        query = """insert into executives (executive_id, name, email, contact, password, address, created_on) values (%s, %s, %s, %s, %s, %s, %s)"""
+        cursor.execute(query, (executive_id, name, email, contact, password, address, created_on))
         self.my_con.commit()
         cursor.close()
         self.my_con.close()
@@ -37,3 +36,13 @@ class DELIVERY_PARTNER:
         cursor.close()
         self.my_con.close()
         return contacts
+
+
+    def executive_details(self, executive_id):
+        cursor = self.my_con.cursor()
+        query = f"""select * from executives where executive_id = '{executive_id}' """
+        cursor.execute(query)
+        details = cursor.fetchall()
+        cursor.close()
+        self.my_con.close()
+        return details[0]

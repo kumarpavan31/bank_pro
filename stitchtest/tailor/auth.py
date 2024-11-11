@@ -1,8 +1,9 @@
-from flask import request
+from flask import request, flash
 import random
 import datetime
 from .model import *
 from .images import *
+from stitchtest.orders.model import ORDERS
 
 
 def sign_up_data():
@@ -28,7 +29,23 @@ def sign_up_data():
     return tailor_id
 
 def take_price(garment, tailor_id):
-    price = request.form.get("price")
+    given_price = request.args.get("price")
+    price = float(given_price)
     SKILL().add_price(tailor_id, garment, price)
     return
 
+
+def verify_tailor():
+    import pdb;pdb.set_trace()
+    contact = request.form.get("tailor_contact")
+    password = request.form.get("tailor_password")
+    try:
+        tailor_id = TAILOR().verify_tailor_db(contact, password)
+        return tailor_id
+    except Exception:
+        flash("Invalid Credentials")
+        return 0
+
+def note_reason_to_cancel(order_id):
+    reason = request.form.get("cancel_reason")
+    ORDERS().cancel_the_order(order_id, reason)

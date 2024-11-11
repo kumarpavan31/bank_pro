@@ -14,8 +14,24 @@ class TAILOR:
         self.my_con.close()
         return
 
-    def verify_tailor(self, ):
-        pass
+    def tailor_info(self, tailor_id):
+        cursor = self.my_con.cursor()
+        query = f"""select * from tailors where tailor_id = '{tailor_id}' """
+        cursor.execute(query)
+        info = cursor.fetchall()
+        cursor.close()
+        self.my_con.close()
+        return info[0]
+
+    def verify_tailor_db(self,contact, password):
+        cursor = self.my_con.cursor()
+        import pdb;pdb.set_trace()
+        query = f"""select tailor_id from tailors where contact = %s and password = %s """
+        cursor.execute(query, (contact, password))
+        tailor_id = cursor.fetchone()
+        cursor.close()
+        self.my_con.close()
+        return tailor_id[0]
 
 
     def check_contact(self):
@@ -66,8 +82,8 @@ class SKILL:
 
     def add_price(self, tailor_id, garment, price):
         cursor = self.my_con.cursor()
-        query = f"""update skills set price= '{price}' where tailor_id = '{tailor_id}' and garment = '{garment}'"""
-        cursor.execute(query, (tailor_id, garment, price))
+        query = f"""update skills set price= %s where tailor_id = %s and garment = %s """
+        cursor.execute(query, (price, tailor_id, garment))
         self.my_con.commit()
         cursor.close()
         self.my_con.close()
@@ -110,3 +126,12 @@ class SKILL:
         cursor.close()
         self.my_con.close()
         return avail_tailors
+
+    def get_price(self, tailor_id, garment):
+        cursor = self.my_con.cursor()
+        query = f"""select price from skills where tailor_id = '{tailor_id}' and garment = '{garment}' """
+        cursor.execute(query)
+        price = cursor.fetchone()
+        cursor.close()
+        self.my_con.close()
+        return price
